@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self';">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>thevirtueye</title>
+
+    <!-- Importa Nunito Sans da Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" integrity="sha384-SDxPaad86W9qwScNWwgfWu4RyxZnFMu6CBHBxJvmMSTwgJWesovgWBlgDG8h+WZE" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" integrity="sha384-WJ54KLh58NgVbSnqToHACpKwQ5fy5AdocUAymrtHzyxl0TVKYsmZwlGgMGxN7ou8" crossorigin="anonymous"></script>
+
+    <!-- Stile personalizzato -->
+    <style>
+        .logo {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+
+        /* Tema chiaro (default) */
+        :root {
+            --bg-color: rgba(30, 30, 30, 0.7);
+            /* Sfondo più scuro e semi-trasparente per il video */
+            --text-color: #f7fafc;
+            --border-color: #2d3748;
+            --card-bg: #2d3748;
+            --card-text: #e2e8f0;
+            --secondary-bg: rgba(26, 32, 44, 0.8);
+            --button-bg: #e2e8f0;
+            --button-text: #1a202c;
+            --card-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+            --section-bg: rgba(26, 32, 44, 0.8);
+            --card-border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            /* Sfondo semi-trasparente scuro */
+            z-index: 1000;
+            /* Assicura che sia sopra gli altri elementi */
+        }
+
+        nav {
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 40px;
+            /* Regola in base all'altezza del tuo header */
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            /* Sfondo semi-trasparente scuro */
+            z-index: 1000;
+
+            /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+        }
+
+        header,
+        nav {
+            background-color: transparent;
+            /* Inizialmente quasi trasparente */
+            transition: background-color 0.3s ease;
+            /* Transizione graduale */
+        }
+
+        .theme-border {
+            border-color: var(--border-color);
+        }
+
+        .theme-text {
+            color: var(--text-color);
+        }
+
+        .theme-secondary-text {
+            color: var(--card-text);
+        }
+
+        .theme-secondary-bg {
+            background-color: var(--secondary-bg);
+        }
+
+        /* Video background */
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+            object-fit: cover;
+        }
+
+        /* Overlay per rendere il contenuto più leggibile */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            /* Overlay scuro trasparente */
+            z-index: -999;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            padding-bottom: 80px;
+
+        }
+
+        .hero-content h2,
+        .hero-content p {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Assicura che il contenuto della Hero sia sopra l'overlay */
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            z-index: 2;
+            color: white;
+            display: flex;
+            /* Conserva il display flex */
+            flex-direction: column;
+            /* Assicura che gli elementi siano in colonna */
+            align-items: center;
+            /* Centra orizzontalmente il contenuto */
+            text-align: center;
+            /* Centra il testo */
+        }
+
+        @media (max-width: 768px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    nav {
+        padding: 0.5rem 1rem;
+    }
+    
+    .section-wrapper > div {
+        flex-direction: column !important;
+    }
+    
+    .section-wrapper > div > div:first-child,
+    .section-wrapper > div > div:nth-child(2) {
+        width: 100% !important;
+    }
+    
+    .section-title {
+        position: static !important;
+        margin-bottom: 20px;
+    }
+    
+    .project-link > div {
+        flex-direction: column !important;
+    }
+    
+    .project-link > div > div:first-child {
+        width: 100% !important;
+        height: 180px !important;
+        margin-bottom: 16px;
+    }
+    
+    header {
+        padding: 20px !important;
+    }
+    
+    .logo {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Dispositivi ancora più piccoli */
+@media (max-width: 480px) {
+  header .logo {
+    font-size: 1.8rem !important; /* Riduci ulteriormente per i telefoni più piccoli */
+  }
+}
+
+/* Media query per dispositivi molto piccoli */
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .social-icons {
+        flex-wrap: wrap;
+    }
+    
+    nav ul {
+        gap: 10px;
+    }
+    
+    .hero {
+        height: 80vh;
+    }
+}
+
+/* Media query per tablet e dispositivi di medie dimensioni */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section-wrapper > div {
+        gap: 20px !important;
+    }
+    
+    .project-link > div {
+        flex-direction: row !important;
+    }
+    
+    .section-wrapper > div > div:first-child {
+        width: 30% !important;
+    }
+    
+    .section-wrapper > div > div:nth-child(2) {
+        width: 70% !important;
+    }
+}
+
+        /* Social icons semplificati */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: #292a2d;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-icons svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        /* Content wrapper per garantire che tutto il contenuto sia sopra il video */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        footer {
+            background-color: transparent
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            position: sticky;
+            top: 100px;
+        }
+
+        .about-section {
+            margin-top: 20px;
+        }
+
+        /* Stile per i progetti in formato lista */
+        .about-section #progetti .section-wrapper>div>div:nth-child(2)>div {
+            transition: transform 0.5s ease;
+        }
+
+        .about-section #progetti .section-wrapper>div>div:nth-child(2)>div:hover {
+            transform: translateX(8px);
+        }
+
+        .about-section #progetti .section-wrapper>div>div:nth-child(2)>div a svg {
+            transition: transform 0.5s ease;
+        }
+
+        .about-section #progetti .section-wrapper>div>div:nth-child(2)>div a:hover svg {
+            transform: translateY(-2px);
+        }
+
+        /* Media query per rendere responsive il layout su dispositivi più piccoli */
+        @media (max-width: 768px) {
+            .about-section #progetti .section-wrapper>div {
+                flex-direction: column;
+            }
+
+            .about-section #progetti .section-wrapper>div>div:first-child {
+                width: 100%;
+            }
+
+            .about-section #progetti .section-wrapper>div>div:nth-child(2) {
+                width: 100%;
+            }
+
+            .about-section #progetti .section-wrapper>div>div:nth-child(2)>div {
+                flex-direction: column;
+            }
+
+            .about-section #progetti .section-wrapper>div>div:nth-child(2)>div>div:first-child {
+                width: 100%;
+                height: 140px;
+                margin-bottom: 16px;
+            }
+        }
+
+        /* Stile per gli approfondimenti in formato lista */
+        .about-section #approfondimenti .section-wrapper>div>div:nth-child(2)>div {
+            transition: transform 0.3s ease;
+        }
+
+        .about-section #approfondimenti .section-wrapper>div>div:nth-child(2)>div:hover {
+            transform: translateX(8px);
+        }
+
+        .about-section #approfondimenti .section-wrapper>div>div:nth-child(2)>div a svg {
+            transition: transform 0.3s ease;
+        }
+
+        .about-section #approfondimenti .section-wrapper>div>div:nth-child(2)>div a:hover svg {
+            transform: translateY(-2px);
+        }
+
+        /* Aggiorna la media query per includere anche la nuova sezione */
+        @media (max-width: 768px) {
+            .about-section #approfondimenti .section-wrapper>div {
+                flex-direction: column;
+            }
+
+            .about-section #approfondimenti .section-wrapper>div>div:first-child {
+                width: 100%;
+            }
+
+            .about-section #approfondimenti .section-wrapper>div>div:nth-child(2) {
+                width: 100%;
+            }
+
+            .about-section #approfondimenti .section-wrapper>div>div:nth-child(2)>div {
+                flex-direction: column;
+            }
+
+            .about-section #approfondimenti .section-wrapper>div>div:nth-child(2)>div>div:first-child {
+                width: 100%;
+                height: 140px;
+                margin-bottom: 16px;
+            }
+        }
+
+        #scroll-content {
+            clip-path: inset(0 0 0 0);
+            -webkit-clip-path: inset(0 0 0 0);
+        }
+
+        .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Effetto hover per i collegamenti progetti e approfondimenti */
+.project-link {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.project-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2), 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+/* Gestione separata del background per evitare il rimbalzo */
+.project-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 250, 252, 0.08);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.project-link:hover::before {
+    opacity: 1;
+}
+
+.project-link:hover .project-bg {
+    opacity: 1;
+}
+
+.project-link h4 svg {
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover h4 svg {
+    transform: translateX(5px) translateY(-2px);
+}
+
+/* Effetto zoom leggero sulle immagini */
+.project-link img {
+    transition: transform 0.4s ease;
+}
+
+.project-link:hover img {
+    transform: scale(1.05);
+}
+
+/* Video background responsiveness */
+@media (max-width: 768px) {
+    #background-video {
+        object-position: center;
+    }
+    
+    .overlay {
+        background: rgba(0, 0, 0, 0.8); /* Overlay più scuro su mobile */
+    }
+}        
+
+.project-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.project-card {
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (max-width: 768px) {
+    .project-card-content {
+        flex-direction: column !important;
+    }
+    
+    .project-card-image {
+        width: 100% !important;
+        height: 180px !important;
+        margin-bottom: 16px;
+    }
+    
+    .project-card-text {
+        width: 100% !important;
+    }
+}
+
+/* Fix per layout a due colonne */
+.two-column-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+@media (max-width: 768px) {
+    .two-column-layout {
+        flex-direction: column;
+    }
+    
+    .column-left,
+    .column-right {
+        width: 100% !important;
+    }
+    
+    .sticky-title {
+        position: static !important;
+        margin-bottom: 20px;
+    }
+}
+
+/* Nascondi completamente il menu originale su mobile */
+@media (max-width: 768px) {
+  nav.mobile-nav {
+    display: none !important;
+  }
+  
+  /* Ridefinisco il padding per compensare lo spazio del menu rimosso */
+  #scroll-content {
+    padding-top: 60px; /* Adatta questo valore in base all'altezza del tuo header */
+  }
+  
+  /* Assicurati che il header sia ben visibile */
+  header {
+    background-color: transparent !important;
+    box-shadow: 0 2px 10px transparent;
+  }
+}
+
+/* Modifica il posizionamento dell'header su mobile per farlo scorrere con la pagina */
+@media (max-width: 768px) {
+  header {
+    position: relative !important; /* Cambia da fixed a relative */
+    background-color: transparent !important; /* Rendi lo sfondo trasparente */
+    box-shadow: none; /* Rimuovi l'ombra */
+  }
+  
+  /* Rimuovi il padding aggiuntivo poiché l'header non è più fisso */
+  #scroll-content {
+    padding-top: 0 !important; 
+  }
+  
+  
+}
+
+@media (max-width: 768px) {
+  /* Regola la hero section per tenere conto dell'header che non è più fisso */
+  .hero {
+    padding-top: 20px; /* Aggiungi un po' di spazio sopra */
+  }
+  
+  /* Migliora la leggibilità del testo nella hero */
+  .hero-content h2, 
+  .hero-content p {
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+  }
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Video di sfondo -->
+    <video autoplay muted loop playsinline id="background-video" preload="auto">
+        <source src="/assets/background2.mp4" type="video/mp4">
+        Il tuo browser non supporta i video HTML5.
+    </video>
+
+    <!-- Overlay per migliorare la visibilità del testo -->
+    <div class="overlay"></div>
+
+    <div class="content-wrapper">
+        <header class="py-5 px-8 theme-border relative">
+            <!-- Logo al centro (posizionato in modo assoluto) -->
+            <div class="absolute left-1/2 transform -translate-x-1/2">
+                <a href="/index1.html#home"
+                    class="logo text-3xl font-bold italic tracking-wider theme-text">thevirtueye</a>
+            </div>
+        </header>
+
+        <!-- Menu di navigazione separato -->
+        <nav class="py-4 px-8 border-b mt-4 mobile-nav" style="border-color: rgba(255, 255, 255, 0);">
+            <div class="container mx-auto flex justify-center">
+                <ul class="flex space-x-12 mobile-menu">
+                    <li>
+                        <a href="#home" class="relative inline-block group theme-secondary-text font-bold">
+                            Home
+                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-full bg-current transition-all duration-250 delay-100"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#chi-sono" class="relative inline-block group theme-secondary-text">
+                            Chi sono
+                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#progetti" class="relative inline-block group theme-secondary-text">
+                            Progetti
+                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#approfondimenti" class="relative inline-block group theme-secondary-text">
+                            Approfondimenti
+                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="scroll-content">
+
+            <!-- Hero Section -->
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <h2 class="text-6xl font-bold mb-2">Portfolio & Pensieri</h2>
+                    <p class="text-xl max-w-2xl mx-auto">
+                        Progetti, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Contenuto Chi sono -->
+            <section class="about-section" id="chi-sono">
+                <div class="container">
+                    <!-- Sezione introduttiva -->
+                    <div class="section-wrapper fade-in-section" style="max-width: 1200px; margin: 0 auto 60px auto;">
+                        <div style="display: flex; flex-direction: row; gap: 40px;">
+                            <!-- Colonna sinistra con il nome -->
+                            <div style="width: 33%; text-align: left;">
+                                <h2 style="font-size: 42px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">
+                                    Alberto
+                                    Cirillo</h2>
+                                <h3 style="font-size: 22px; font-weight: 500; color: #ffffff; margin-bottom: 32px;">
+                                    Cybersecurity Student</h3>
+                            </div>
+
+                            <!-- Colonna destra con la bio -->
+                            <div style="width: 67%;">
+                                <p style="color: #DCD1D5; margin-bottom: 24px; line-height: 1.7;">
+                                    Sono Alberto, studente in Cybersecurity con una forte passione per la tecnologia e
+                                    la
+                                    sicurezza informatica. Sto completando una laurea triennale in Cybersecurity, con
+                                    particolare interesse per l'analisi delle minacce, l'OSINT e strategie di difesa.
+
+
+                                    Mi affascina tutto ciò che riguarda l'identificazione delle vulnerabilità, la
+                                    protezione
+                                    dei sistemi e l'uso consapevole degli strumenti digitali. Il mio obiettivo è
+                                    approfondire sempre più l'aspetto tecnico della sicurezza, mantenendo uno sguardo
+                                    attento anche ai comportamenti umani che la influenzano.
+                                </p>
+                                <p style="color: #DCD1D5; margin-bottom: 24px; line-height: 1.7;">
+                                    Durante il mio percorso sto approfondendo tematiche come crittografia, penetration
+                                    testing, analisi del traffico di rete, auditing su sistemi Windows/Linux e l'uso di
+                                    strumenti avanzati per l'anonimato online.
+                                </p>
+                                <p style="color: #DCD1D5; margin-bottom: 24px; line-height: 1.7;">
+                                    Il mio obiettivo è unire competenze tecniche e approccio umano per costruire un
+                                    mondo
+                                    digitale più sicuro e consapevole.
+                                </p>
+                                <p style="color: #DCD1D5; margin-bottom: 24px; line-height: 1.7;">
+                                    In questo portfolio troverai progetti e idee nate dalla voglia di
+                                    imparare, condividere e contribuire al mondo della cybersecurity.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sezione competenze -->
+                    <div class="section-wrapper fade-in-section" style="max-width: 1200px; margin: 0 auto 90px auto;">
+                        <div style="display: flex; flex-direction: row; gap: 40px;">
+                            <!-- Colonna sinistra con il titolo -->
+                            <div style="width: 33%; text-align: left; position: relative; height: 100%;">
+                                <div style="position: sticky; top: 100px;">
+                                    <h3 style="font-size: 28px; font-weight: 500; color: #ffffff;">Competenze</h3>
+                                </div>
+                            </div>
+
+                            <!-- Lista competenze (allineata con la bio) -->
+                            <div style="width: 67%; display: flex; flex-direction: column; gap: 30px;">
+                                <!-- Competenza 1 -->
+                                <div>
+                                    <h4 style="font-size: 20px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+                                        Sistemi Operativi</h4>
+                                    <p style="color: #d1d5db; line-height: 1.7;">
+                                        Studio e utilizzo ambienti Windows e Linux con particolare attenzione alla
+                                        configurazione, gestione dei processi, permessi, sicurezza e comandi da
+                                        terminale.
+                                        Approfondisco queste competenze anche in ottica forense e difensiva, con un
+                                        focus
+                                        sull'analisi dei sistemi e sulla loro protezione.
+                                    </p>
+                                </div>
+
+                                <!-- Competenza 2 -->
+                                <div>
+                                    <h4 style="font-size: 20px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+                                        Networking</h4>
+                                    <p style="color: #d1d5db; line-height: 1.7;">
+                                        Studio dei fondamenti delle reti informatiche: modelli OSI e TCP/IP,
+                                        indirizzamento
+                                        IP,
+                                        protocolli, routing e DNS. Imparo a riconoscere vulnerabilità e analizzare il
+                                        traffico di
+                                        rete per capire dove possono nascere i rischi.
+                                    </p>
+                                </div>
+
+                                <!-- Competenza 3 -->
+                                <div>
+                                    <h4 style="font-size: 20px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+                                        Programmazione</h4>
+                                    <p style="color: #d1d5db; line-height: 1.7;">
+                                        Conoscenze di Powershell, Bash, HTML, CSS e nozioni di base su Python e
+                                        JavaScript,
+                                        con un
+                                        focus particolare sull'automazione di strumenti di sicurezza e lo sviluppo di
+                                        script
+                                        per
+                                        pentesting e automazione di sistemi.
+                                    </p>
+                                </div>
+
+                                <!-- Competenza 4 -->
+                                <div>
+                                    <h4 style="font-size: 20px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+                                        Ethical Hacking</h4>
+                                    <p style="color: #d1d5db; line-height: 1.7;">
+                                        Utilizzo di piattaforme come TryHackMe ed esercitazioni pratiche in ambienti
+                                        virtuali per
+                                        mettere alla prova le mie competenze in sicurezza informatica simulando scenari
+                                        reali,
+                                        testare strumenti e comprendere vulnerabilità.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sezione percorso -->
+                    <div class="section-wrapper fade-in-section" style="max-width: 1200px; margin: 0 auto 200px auto;">
+                        <div style="display: flex; flex-direction: row; gap: 40px;">
+                            <!-- Colonna sinistra con il titolo -->
+                            <div style="width: 33%; text-align: left; position: relative; height: 100%;">
+                                <div style="position: sticky; top: 100px;">
+                                    <h3 style="font-size: 28px; font-weight: 500; color: #ffffff;">Percorso</h3>
+                                </div>
+                            </div>
+
+                            <!-- Lista percorso (allineata con la bio) -->
+                            <div style="width: 67%; display: flex; flex-direction: column; gap: 40px;">
+                                <!-- Esperienza 1 -->
+                                <div style="border-left: 2px solid #60a5fa; padding-left: 24px; position: relative;">
+                                    <div
+                                        style="position: absolute; width: 12px; height: 12px; background-color: #60a5fa; border-radius: 50%; left: -7px; top: 8px;">
+                                    </div>
+                                    <span
+                                        style="color: #9ca3af; font-size: 14px; display: block; margin-bottom: 4px;">2024
+                                        - Oggi</span>
+                                    <h4 style="font-size: 20px; font-weight: 500; color: #ffffff; margin-bottom: 8px;">
+                                        Studente Universitario Cybersecurity</h4>
+                                    <p style="color: #d1d5db; line-height: 1.7;">
+                                        Percorso accademico triennale in Sicurezza Informatica con focus su sistemi
+                                        operativi,
+                                        networking, programmazione, ethical hacking ed OSINT.
+                                    </p>
+                                </div>
+
+                                <!-- Esperienza 2 -->
+                                <div style="border-left: 2px solid #60a5fa; padding-left: 24px; position: relative;">
+                                    <div
+                                        style="position: absolute; width: 12px; height: 12px; background-color: #60a5fa; border-radius: 50%; left: -7px; top: 8px;">
+                                    </div>
+                                    <span
+                                        style="color: #9ca3af; font-size: 14px; display: block; margin-bottom: 4px;">2012
+                                        - 2024</span>
+                                    <h4 style="font-size: 20px; font-weight: 500; color: #ffffff; margin-bottom: 8px;">
+                                        Programmatore CAD/CAM</h4>
+                                    <p style="color: #d1d5db; line-height: 1.7;">
+                                        Programmatore linguaggi Selca, Heidenhain, Fanuc.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione Progetti -->
+            <section class="about-section" id="progetti">
+                <div class="container">
+                    <div class="section-wrapper fade-in-section" style="max-width: 1200px; margin: 0 auto 150px auto;">
+                        <div style="display: flex; flex-direction: row; gap: 40px;">
+                            <!-- Colonna sinistra con il titolo -->
+                            <div style="width: 33%; text-align: left; position: relative; height: 100%;">
+                                <div style="position: sticky; top: 100px;">
+                                    <h3 style="font-size: 38px; font-weight: 500; color: #ffffff;">Progetti</h3>
+                                </div>
+                            </div>
+
+                            <!-- Lista dei progetti -->
+                            <div style="width: 67%; display: flex; flex-direction: column; gap: 30px;">
+                                <!-- Progetto 1 -->
+                                <div style="position: relative; margin-bottom: 20px;">
+                                    <a href="https://github.com/thevirtueye/DNS-Switcher" class="project-link"
+                                        style="display: block; position: relative; z-index: 2; text-decoration: none; padding: 20px; border-radius: 8px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);"
+                                        target="_blank" rel="noopener noreferrer">
+
+                                        <!-- Background overlay che appare solo al passaggio del mouse -->
+                                        <div class="project-bg"
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(17, 25, 40, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; opacity: 0; transition: opacity 0.2s ease; z-index: -1; box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);">
+                                        </div>
+
+                                        <div
+                                            style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
+                                            <!-- Immagine a sinistra -->
+                                            <div
+                                                style="width: 180px; min-width: 180px; height: 120px; background-color: #1e1e1e; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
+                                                <img src="/assets/DNS_Switcher.png" alt="DNS Switcher"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+
+                                            <!-- Contenuto testuale a destra -->
+                                            <div>
+                                                <div
+                                                    style="display: flex; align-items: center; margin-bottom: 8px; position: relative;">
+                                                    <h4
+                                                        style="font-size: 20px; font-weight: 600; color: #ffffff; margin-right: 12px; margin-top: 0;">
+                                                        DNS Switcher
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            style="display: inline-block; vertical-align: middle; margin-left: 6px; transition: transform 0.3s ease; position: relative; top: -2px;">
+                                                            <path
+                                                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                            </path>
+                                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                        </svg>
+                                                    </h4>
+                                                </div>
+                                                <p style="color: #d1d5db; line-height: 1.7; margin-bottom: 12px;">
+                                                    DNS-Switcher è uno script PowerShell che automatizza il passaggio
+                                                    tra
+                                                    diverse configurazioni DNS sul sistema Windows.
+                                                </p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Powershell</span>
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Networking</span>
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Automazione</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione Approfondimenti -->
+            <section class="about-section" id="approfondimenti">
+                <div class="container">
+                    <div class="section-wrapper fade-in-section" style="max-width: 1200px; margin: 0 auto 70px auto;">
+                        <div style="display: flex; flex-direction: row; gap: 40px;">
+                            <!-- Colonna sinistra con il titolo -->
+                            <div style="width: 33%; text-align: left; position: relative; height: 100%;">
+                                <div style="position: sticky; top: 100px;">
+                                    <h3 style="font-size: 38px; font-weight: 500; color: #ffffff;">Approfondimenti</h3>
+                                </div>
+                            </div>
+
+                            <!-- Lista dei progetti -->
+                            <div style="width: 67%; display: flex; flex-direction: column; gap: 30px;">
+                                <!-- Progetto 1 -->
+                                <div style="position: relative; margin-bottom: 20px;">
+                                    <a href="/Articoli/guida_osint.html" class="project-link"
+                                        style="display: block; position: relative; z-index: 2; text-decoration: none; padding: 20px; border-radius: 8px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);"
+                                        target="_blank" rel="noopener noreferrer">
+
+                                        <!-- Background overlay che appare solo al passaggio del mouse -->
+                                        <div class="project-bg"
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(17, 25, 40, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; opacity: 0; transition: opacity 0.2s ease; z-index: -1; box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
+                                            <!-- Immagine a sinistra -->
+                                            <div
+                                                style="width: 180px; min-width: 180px; height: 120px; background-color: #1e1e1e; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
+                                                <img src="/assets/osint.avif" alt="DNS Switcher"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+
+                                            <!-- Contenuto testuale a destra -->
+                                            <div>
+                                                <div
+                                                    style="display: flex; align-items: center; margin-bottom: 8px; position: relative;">
+                                                    <h4
+                                                        style="font-size: 20px; font-weight: 600; color: #ffffff; margin-right: 12px; margin-top: 0;">
+                                                        Guida all'OSINT
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            style="display: inline-block; vertical-align: middle; margin-left: 6px; transition: transform 0.3s ease; position: relative; top: -2px;">
+                                                            <path
+                                                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                            </path>
+                                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                        </svg>
+                                                    </h4>
+                                                </div>
+                                                <p style="color: #d1d5db; line-height: 1.7; margin-bottom: 12px;">
+                                                    Una guida pratica sulle tecniche di Open Source Intelligence, con
+                                                    focus
+                                                    sugli strumenti etici per la raccolta di informazioni pubbliche.
+                                                    Include
+                                                    metodologie, risorse e considerazioni legali per ricercatori e
+                                                    professionisti della sicurezza.
+                                                </p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">OSINT</span>
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Sicurezza</span>
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Privacy</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                
+                                <div style="position: relative; margin-bottom: 20px;">
+                                    <a href="/Articoli/zero_day.html" class="project-link"
+                                        style="display: block; position: relative; z-index: 2; text-decoration: none; padding: 20px; border-radius: 8px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);"
+                                        target="_blank" rel="noopener noreferrer">
+
+                                        <!-- Background overlay che appare solo al passaggio del mouse -->
+                                        <div class="project-bg"
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(17, 25, 40, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; opacity: 0; transition: opacity 0.2s ease; z-index: -1; box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
+                                            <!-- Immagine a sinistra -->
+                                            <div
+                                                style="width: 180px; min-width: 180px; height: 120px; background-color: #1e1e1e; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
+                                                <img src="/assets/zero_day.png" alt="DNS Switcher"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+
+                                            <!-- Contenuto testuale a destra -->
+                                            <div>
+                                                <div
+                                                    style="display: flex; align-items: center; margin-bottom: 8px; position: relative;">
+                                                    <h4
+                                                        style="font-size: 20px; font-weight: 600; color: #ffffff; margin-right: 12px; margin-top: 0;">
+                                                        Zero Day: cos'è?
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            style="display: inline-block; vertical-align: middle; margin-left: 6px; transition: transform 0.3s ease; position: relative; top: -2px;">
+                                                            <path
+                                                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                            </path>
+                                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                        </svg>
+                                                    </h4>
+                                                </div>
+                                                <p style="color: #d1d5db; line-height: 1.7; margin-bottom: 12px;">
+                                                    Nel panorama in continua evoluzione della sicurezza informatica, le vulnerabilità Zero Day rappresentano una delle minacce più temute e pericolose. Ma di che cosa si tratta esattamente? 
+                                                </p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Zero Day</span>
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Cybersecurity</span>
+                                                    <span
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Exploit</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Footer Section -->
+            <footer class="border-t py-4 pb-1" style="border-color: rgba(255, 255, 255, 0);">
+                <div class="container mx-auto px-8 text-center">
+                    <!-- Logo -->
+                    <h2 class="logo text-xl font-bold italic tracking-wider theme-text mb-4">thevirtueye</h2>
+
+                    <!-- Contatti essenziali -->
+                    <div class="flex justify-center items-center mb-4">
+                        <a href="mailto:thevirtueye@gmail.com"
+                            class="theme-secondary-text hover:underline flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            thevirtueye@gmail.com
+                        </a>
+                    </div>
+
+                    <!-- Social icons corretti -->
+                    <div class="social-icons">
+                        <a href="https://x.com/thevirtueye" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/thevirtueye" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="my-5">
+                        <hr style="border-color: rgba(255, 255, 255, 0.2); padding: 1rem 0;">
+                    </div>
+
+                    <!-- Copyright e privacy -->
+                    <div class="theme-secondary-text text-sm">
+                        <p>&copy; 2025 thevirtueye. Tutti i diritti riservati.</p>
+                        <p class="mt-2">
+                            <a href="/Privacy-policy/privacy-policy.html" class="hover:underline mx-2">Privacy
+                                Policy</a>
+                        </p>
+                        <p class="mt-2 text-xs mb-6 opacity-120" style="color: rgba(255,255,255,0.5);">
+                            Le informazioni fornite su questo sito sono a scopo educativo. L'utente si assume ogni
+                            responsabilità per il loro utilizzo.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+'use strict';
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('nav');
+    const extra = 30; // px extra sotto il nav
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    const scrollable = document.getElementById('scroll-content');
+    
+    // Flag per controllare se lo scroll è stato provocato da un clic su un link
+    let isScrollingFromClick = false;
+    // Link attualmente attivo
+    let activeClickedLink = null;
+
+    // Definisci i punti di trigger personalizzati per ogni sezione
+    const sectionTriggers = {
+        'home': {
+            triggerPoint: 0,
+            offset: 0
+        },
+        'chi-sono': {
+            triggerPoint: 0,
+            offset: 100
+        },
+        'progetti': {
+            triggerPoint: 0, // Modificato per migliorare la rilevazione
+            offset: 100
+        },
+        'approfondimenti': {
+            triggerPoint: 0, // Modificato per migliorare la rilevazione
+            offset: 100
+        }
+    };
+
+    // Funzione per attivare il link corretto
+    function activateLink(link) {
+        links.forEach(l => {
+            l.classList.remove('font-bold');
+            const span = l.querySelector('span');
+            span.classList.remove('w-full');
+            span.classList.add('w-0');
+        });
+        
+        if (link) {
+            link.classList.add('font-bold');
+            const span = link.querySelector('span');
+            span.classList.remove('w-0');
+            span.classList.add('w-full');
+        }
+    }
+
+    // 1. Clip-path dinamico
+// Clip-path dinamico
+window.addEventListener('scroll', () => {
+    const mobileView = window.innerWidth <= 768;
+    
+    if (mobileView) {
+        // Su mobile non serve il clip-path perché l'header scorre con la pagina
+        scrollable.style.clipPath = 'none';
+        scrollable.style.webkitClipPath = 'none';
+    } else {
+        // Su desktop usa il calcolo originale
+        const hideLine = nav.getBoundingClientRect().bottom + extra;
+        const topWrap = scrollable.getBoundingClientRect().top;
+        const over = Math.max(hideLine - topWrap, 0);
+        scrollable.style.clipPath = `inset(${over}px 0 0 0)`;
+        scrollable.style.webkitClipPath = `inset(${over}px 0 0 0)`;
+    }
+});
+
+    // 2. Smooth-scroll con offset personalizzati
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            
+            if (!target) return;
+            
+            // Attiva il link e imposta il flag
+            activateLink(link);
+            isScrollingFromClick = true;
+            activeClickedLink = link;
+            
+            const navHeight = nav.getBoundingClientRect().height;
+            const customOffset = sectionTriggers[targetId]?.offset || 0;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - customOffset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Resetta il flag dopo un intervallo
+            setTimeout(() => {
+                isScrollingFromClick = false;
+                activeClickedLink = null;
+            }, 1000);
+        });
+    });
+
+    // 3. Observer migliorato per attivare i link durante lo scroll
+    function checkActiveSection() {
+
+        if (window.innerWidth <= 768) return;
+
+        // Se stiamo scrollando da un clic, non cambiare il link attivo
+        if (isScrollingFromClick) {
+            return;
+        }
+        
+        const navHeight = nav.getBoundingClientRect().height;
+        const scrollPosition = window.scrollY;
+        
+        // Ottieni tutte le sezioni nel documento
+        const sections = links.map(link => {
+            const targetId = link.getAttribute('href').slice(1);
+            return document.getElementById(targetId);
+        }).filter(Boolean); // Rimuovi elementi null
+        
+        // Ordina le sezioni dall'ultima alla prima (per verificare prima quelle più basse nella pagina)
+        const orderedSections = [...sections].reverse();
+        
+        // Calcola una zona buffer per migliorare la rilevazione
+        const buffer = window.innerHeight / 4; // 25% dell'altezza della viewport
+        
+        // Trova la sezione attiva
+        for (const section of orderedSections) {
+            const sectionTop = section.getBoundingClientRect().top + scrollPosition;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            // Se il punto di viewport + buffer è all'interno della sezione, questa è attiva
+            if (scrollPosition + navHeight + buffer >= sectionTop && scrollPosition + navHeight < sectionBottom) {
+                const correspondingLink = links.find(link => link.getAttribute('href') === `#${section.id}`);
+                if (correspondingLink) {
+                    activateLink(correspondingLink);
+                    return;
+                }
+            }
+        }
+        
+        // Se siamo qui, potremmo essere all'inizio della pagina, quindi attiva Home
+        const isAtTop = scrollPosition < 100; // Considera i primi 100px come "all'inizio"
+        if (isAtTop) {
+            const homeLink = links.find(link => link.getAttribute('href') === '#home');
+            if (homeLink) {
+                activateLink(homeLink);
+            }
+        }
+    }
+
+    // Aggiungi l'event listener per lo scroll
+    window.addEventListener('scroll', checkActiveSection);
+    window.addEventListener('resize', checkActiveSection);
+    
+    // Controlla anche quando il contenuto cambia (può essere utile in alcuni casi)
+    const observer = new MutationObserver(checkActiveSection);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Esegui una prima verifica all'avvio
+    checkActiveSection();
+});
+
+// Gestione effetti fade-in al scroll
+const fadeElements = document.querySelectorAll('.fade-in-section');
+
+function checkFade() {
+    fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('is-visible');
+        }
+    });
+}
+
+// Controlla all'inizio e poi ad ogni scroll
+checkFade();
+window.addEventListener('scroll', checkFade);
+
+
+
+// Esegui quando il documento è caricato
+document.addEventListener('DOMContentLoaded', function() {
+    setupMobileMenu();
+});
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
