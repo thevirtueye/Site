@@ -1289,9 +1289,20 @@ window.addEventListener('scroll', checkFade);
 
 
 // Esegui quando il documento è caricato
-document.addEventListener('DOMContentLoaded', function() {
-    setupMobileMenu();
-});
+        document.addEventListener('DOMContentLoaded', function () {
+            setupMobileMenu();
+
+            // Codice per ottimizzare il caricamento del video
+            const video = document.getElementById('background-video');
+
+            // Forza il caricamento
+            video.load();
+
+            // Tenta di riprodurre il video non appena possibile
+            video.addEventListener('canplaythrough', function () {
+                video.play();
+            }, { once: true });
+        });
 
 
 
