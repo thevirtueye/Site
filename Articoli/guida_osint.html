@@ -520,7 +520,7 @@
 
 <body>
     <!-- Video di sfondo -->
-    <video autoplay muted loop playsinline id="background-video" preload="auto">
+    <video autoplay muted loop playsinline id="background-video" preload="auto" poster="/assets/screenshot.png">
         <source src="/assets/background2.mp4" type="video/mp4">
         Il tuo browser non supporta i video HTML5.
     </video>
@@ -996,9 +996,16 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
-// Ottimizzazione caricamento video su mobile
 document.addEventListener('DOMContentLoaded', function() {
   const video = document.getElementById('background-video');
+  
+  // Forza il caricamento
+  video.load();
+  
+  // Tenta di riprodurre il video non appena possibile
+  video.addEventListener('canplaythrough', function() {
+    video.play();
+  }, { once: true });
   
   if (isMobile()) {
     // Riduce qualità o nasconde il video su mobile per migliori prestazioni
