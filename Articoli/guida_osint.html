@@ -395,11 +395,16 @@
   }
 }
 
-/* Video background responsiveness */
 @media (max-width: 768px) {
-  #background-video {
-    object-position: center;
-  }
+    #background-video {
+        position: fixed;
+        object-position: center center;
+        object-fit: cover;
+        width: 100vw; /* Usa viewport width invece di min-width */
+        height: 100vh; /* Usa viewport height invece di min-height */
+        transform: translateZ(0); /* Forza l'accelerazione hardware */
+        will-change: transform; /* Suggerisce al browser di ottimizzare */
+    }
   
   .overlay {
     background: rgba(0, 0, 0, 0.8); /* Overlay più scuro su mobile */
