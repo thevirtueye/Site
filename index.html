@@ -2,53 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
-  font-src https://fonts.gstatic.com;
-  img-src 'self' data: https://thevirtueye.com;
-  media-src 'self';
-  frame-src 'none';">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alberto Cirillo | thevirtueye</title>
-    <meta name="robots" content="index, follow">
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Alberto Cirillo",
-          "url": "https://thevirtueye.com/",
-          "sameAs": [
-            "https://github.com/thevirtueye",
-            "https://x.com/thevirtueye"
-          ],
-          "description": "Portfolio, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale.",
-          "jobTitle": "Cybersecurity Student",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "thevirtueye"
-          }
-        }
-        </script>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
-<meta name="description" content="Portfolio, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale.">
+    <!-- Meta Tag SEO -->
+    <meta name="description"
+        content="Portfolio, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale. Alberto Cirillo - Cybersecurity Student.">
+    <meta name="keywords"
+        content="cybersecurity, sicurezza informatica, OSINT, Alberto Cirillo, thevirtueye, ethical hacking, privacy, tecnologia">
+    <meta name="author" content="Alberto Cirillo">
 
-<meta property="og:title" content="thevirtueye">
-<meta property="og:description" content="Portfolio, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale.">
-<meta property="og:url" content="https://thevirtueye.com">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="thevirtueye">
-<!-- Quando aggiungerai il logo: -->
-<!-- <meta property="og:image" content="https://thevirtueye.com/assets/img/logo.png"> -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thevirtueye.com/">
+    <meta property="og:title" content="Alberto Cirillo | thevirtueye">
+    <meta property="og:description"
+        content="Portfolio, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale.">
+    <meta property="og:image" content="https://thevirtueye.com/assets/screenshot.png">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self';">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-     
+    <!-- X (precedentemente Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://thevirtueye.com/">
+    <meta name="twitter:title" content="Alberto Cirillo | thevirtueye">
+    <meta name="twitter:description"
+        content="Portfolio, idee e riflessioni su sicurezza informatica, tecnologia e consapevolezza digitale.">
+    <meta name="twitter:image" content="https://thevirtueye.com/assets/screenshot.png">
+
+    <!-- LinkedIn -->
+    <meta property="og:site_name" content="thevirtueye">
+    <meta property="og:locale" content="it_IT">
+
+    <!-- Favicon -->
+    <!-- <link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"> -->
+
+    <title>thevirtueye</title>
 
     <!-- Importa Nunito Sans da Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,8 +50,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500&display=swap"
         rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" integrity="sha384-SDxPaad86W9qwScNWwgfWu4RyxZnFMu6CBHBxJvmMSTwgJWesovgWBlgDG8h+WZE" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" integrity="sha384-WJ54KLh58NgVbSnqToHACpKwQ5fy5AdocUAymrtHzyxl0TVKYsmZwlGgMGxN7ou8" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Alberto Cirillo",
+          "jobTitle": "Cybersecurity Student",
+          "url": "https://thevirtueye.com",
+          "sameAs": [
+            "https://github.com/thevirtueye",
+            "https://x.com/thevirtueye"
+          ],
+          "knowsAbout": ["Cybersecurity", "OSINT", "Ethical Hacking", "Network Security"]
+        }
+        </script>
 
     <!-- Stile personalizzato -->
     <style>
@@ -200,102 +209,103 @@
         }
 
         @media (max-width: 768px) {
-    .hero-content h2 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-    
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-    }
-    
-    nav {
-        padding: 0.5rem 1rem;
-    }
-    
-    .section-wrapper > div {
-        flex-direction: column !important;
-    }
-    
-    .section-wrapper > div > div:first-child,
-    .section-wrapper > div > div:nth-child(2) {
-        width: 100% !important;
-    }
-    
-    .section-title {
-        position: static !important;
-        margin-bottom: 20px;
-    }
-    
-    .project-link > div {
-        flex-direction: column !important;
-    }
-    
-    .project-link > div > div:first-child {
-        width: 100% !important;
-        height: 180px !important;
-        margin-bottom: 16px;
-    }
-    
-    header {
-        padding: 20px !important;
-    }
-    
-    .logo {
-        font-size: 1.8rem !important;
-    }
-}
+            .hero-content h2 {
+                font-size: 2rem;
+            }
 
-/* Dispositivi ancora più piccoli */
-@media (max-width: 480px) {
-  header .logo {
-    font-size: 1.8rem !important; /* Riduci ulteriormente per i telefoni più piccoli */
-  }
-}
+            .hero-content p {
+                font-size: 0.9rem;
+            }
 
-/* Media query per dispositivi molto piccoli */
-@media (max-width: 480px) {
-    .hero-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    .social-icons {
-        flex-wrap: wrap;
-    }
-    
-    nav ul {
-        gap: 10px;
-    }
-    
-    .hero {
-        height: 80vh;
-    }
-}
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
 
-/* Media query per tablet e dispositivi di medie dimensioni */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .section-wrapper > div {
-        gap: 20px !important;
-    }
-    
-    .project-link > div {
-        flex-direction: row !important;
-    }
-    
-    .section-wrapper > div > div:first-child {
-        width: 30% !important;
-    }
-    
-    .section-wrapper > div > div:nth-child(2) {
-        width: 70% !important;
-    }
-}
+            nav {
+                padding: 0.5rem 1rem;
+            }
+
+            .section-wrapper>div {
+                flex-direction: column !important;
+            }
+
+            .section-wrapper>div>div:first-child,
+            .section-wrapper>div>div:nth-child(2) {
+                width: 100% !important;
+            }
+
+            .section-title {
+                position: static !important;
+                margin-bottom: 20px;
+            }
+
+            .project-link>div {
+                flex-direction: column !important;
+            }
+
+            .project-link>div>div:first-child {
+                width: 100% !important;
+                height: 180px !important;
+                margin-bottom: 16px;
+            }
+
+            header {
+                padding: 20px !important;
+            }
+
+            .logo {
+                font-size: 1.8rem !important;
+            }
+        }
+
+        /* Dispositivi ancora più piccoli */
+        @media (max-width: 480px) {
+            header .logo {
+                font-size: 1.8rem !important;
+                /* Riduci ulteriormente per i telefoni più piccoli */
+            }
+        }
+
+        /* Media query per dispositivi molto piccoli */
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .social-icons {
+                flex-wrap: wrap;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+        }
+
+        /* Media query per tablet e dispositivi di medie dimensioni */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .section-wrapper>div {
+                gap: 20px !important;
+            }
+
+            .project-link>div {
+                flex-direction: row !important;
+            }
+
+            .section-wrapper>div>div:first-child {
+                width: 30% !important;
+            }
+
+            .section-wrapper>div>div:nth-child(2) {
+                width: 70% !important;
+            }
+        }
 
         /* Social icons semplificati */
         .social-icons {
@@ -445,186 +455,199 @@
         }
 
         .fade-in-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
 
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* Effetto hover per i collegamenti progetti e approfondimenti */
-.project-link {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
+        /* Effetto hover per i collegamenti progetti e approfondimenti */
+        .project-link {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
 
-.project-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2), 0 0 15px rgba(0, 255, 255, 0.1);
-}
+        .project-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2), 0 0 15px rgba(0, 255, 255, 0.1);
+        }
 
-/* Gestione separata del background per evitare il rimbalzo */
-.project-link::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(247, 250, 252, 0.08);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-    border-radius: 8px;
-    pointer-events: none;
-}
+        /* Gestione separata del background per evitare il rimbalzo */
+        .project-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(247, 250, 252, 0.08);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            border-radius: 8px;
+            pointer-events: none;
+        }
 
-.project-link:hover::before {
-    opacity: 1;
-}
+        .project-link:hover::before {
+            opacity: 1;
+        }
 
-.project-link:hover .project-bg {
-    opacity: 1;
-}
+        .project-link:hover .project-bg {
+            opacity: 1;
+        }
 
-.project-link h4 svg {
-    transition: transform 0.3s ease;
-}
+        .project-link h4 svg {
+            transition: transform 0.3s ease;
+        }
 
-.project-link:hover h4 svg {
-    transform: translateX(5px) translateY(-2px);
-}
+        .project-link:hover h4 svg {
+            transform: translateX(5px) translateY(-2px);
+        }
 
-/* Effetto zoom leggero sulle immagini */
-.project-link img {
-    transition: transform 0.4s ease;
-}
+        /* Effetto zoom leggero sulle immagini */
+        .project-link img {
+            transition: transform 0.4s ease;
+        }
 
-.project-link:hover img {
-    transform: scale(1.05);
-}
+        .project-link:hover img {
+            transform: scale(1.05);
+        }
 
-@media (max-width: 768px) {
-    #background-video {
-        position: fixed;
-        object-position: center center;
-        object-fit: cover;
-        width: 100vw; /* Usa viewport width invece di min-width */
-        height: 100vh; /* Usa viewport height invece di min-height */
-        transform: translateZ(0); /* Forza l'accelerazione hardware */
-        will-change: transform; /* Suggerisce al browser di ottimizzare */
-    }
-    
-    .overlay {
-        background: rgba(0, 0, 0, 0.8); /* Overlay più scuro su mobile */
-    }
-}        
+        /* Video background responsiveness */
+        @media (max-width: 768px) {
+            #background-video {
+                position: fixed;
+                object-position: center center;
+                object-fit: cover;
+                width: 100vw;
+                /* Usa viewport width invece di min-width */
+                height: 100vh;
+                /* Usa viewport height invece di min-height */
+                transform: translateZ(0);
+                /* Forza l'accelerazione hardware */
+                will-change: transform;
+                /* Suggerisce al browser di ottimizzare */
+            }
 
-.project-card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
-}
 
-.project-card {
-    width: 100%;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+            .overlay {
+                background: rgba(0, 0, 0, 0.8);
+                /* Overlay più scuro su mobile */
+            }
+        }
 
-@media (max-width: 768px) {
-    .project-card-content {
-        flex-direction: column !important;
-    }
-    
-    .project-card-image {
-        width: 100% !important;
-        height: 180px !important;
-        margin-bottom: 16px;
-    }
-    
-    .project-card-text {
-        width: 100% !important;
-    }
-}
+        .project-card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
 
-/* Fix per layout a due colonne */
-.two-column-layout {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-}
+        .project-card {
+            width: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-@media (max-width: 768px) {
-    .two-column-layout {
-        flex-direction: column;
-    }
-    
-    .column-left,
-    .column-right {
-        width: 100% !important;
-    }
-    
-    .sticky-title {
-        position: static !important;
-        margin-bottom: 20px;
-    }
-}
+        @media (max-width: 768px) {
+            .project-card-content {
+                flex-direction: column !important;
+            }
 
-/* Nascondi completamente il menu originale su mobile */
-@media (max-width: 768px) {
-  nav.mobile-nav {
-    display: none !important;
-  }
-  
-  /* Ridefinisco il padding per compensare lo spazio del menu rimosso */
-  #scroll-content {
-    padding-top: 60px; /* Adatta questo valore in base all'altezza del tuo header */
-  }
-  
-  /* Assicurati che il header sia ben visibile */
-  header {
-    background-color: transparent !important;
-    box-shadow: 0 2px 10px transparent;
-  }
-}
+            .project-card-image {
+                width: 100% !important;
+                height: 180px !important;
+                margin-bottom: 16px;
+            }
 
-/* Modifica il posizionamento dell'header su mobile per farlo scorrere con la pagina */
-@media (max-width: 768px) {
-  header {
-    position: relative !important; /* Cambia da fixed a relative */
-    background-color: transparent !important; /* Rendi lo sfondo trasparente */
-    box-shadow: none; /* Rimuovi l'ombra */
-  }
-  
-  /* Rimuovi il padding aggiuntivo poiché l'header non è più fisso */
-  #scroll-content {
-    padding-top: 0 !important; 
-  }
-  
-  
-}
+            .project-card-text {
+                width: 100% !important;
+            }
+        }
 
-@media (max-width: 768px) {
-  /* Regola la hero section per tenere conto dell'header che non è più fisso */
-  .hero {
-    padding-top: 20px; /* Aggiungi un po' di spazio sopra */
-  }
-  
-  /* Migliora la leggibilità del testo nella hero */
-  .hero-content h2, 
-  .hero-content p {
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
-  }
-}
+        /* Fix per layout a due colonne */
+        .two-column-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+        }
 
+        @media (max-width: 768px) {
+            .two-column-layout {
+                flex-direction: column;
+            }
+
+            .column-left,
+            .column-right {
+                width: 100% !important;
+            }
+
+            .sticky-title {
+                position: static !important;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Nascondi completamente il menu originale su mobile */
+        @media (max-width: 768px) {
+            nav.mobile-nav {
+                display: none !important;
+            }
+
+            /* Ridefinisco il padding per compensare lo spazio del menu rimosso */
+            #scroll-content {
+                padding-top: 60px;
+                /* Adatta questo valore in base all'altezza del tuo header */
+            }
+
+            /* Assicurati che il header sia ben visibile */
+            header {
+                background-color: transparent !important;
+                box-shadow: 0 2px 10px transparent;
+            }
+        }
+
+        /* Modifica il posizionamento dell'header su mobile per farlo scorrere con la pagina */
+        @media (max-width: 768px) {
+            header {
+                position: relative !important;
+                /* Cambia da fixed a relative */
+                background-color: transparent !important;
+                /* Rendi lo sfondo trasparente */
+                box-shadow: none;
+                /* Rimuovi l'ombra */
+            }
+
+            /* Rimuovi il padding aggiuntivo poiché l'header non è più fisso */
+            #scroll-content {
+                padding-top: 0 !important;
+            }
+
+
+        }
+
+        @media (max-width: 768px) {
+
+            /* Regola la hero section per tenere conto dell'header che non è più fisso */
+            .hero {
+                padding-top: 20px;
+                /* Aggiungi un po' di spazio sopra */
+            }
+
+            /* Migliora la leggibilità del testo nella hero */
+            .hero-content h2,
+            .hero-content p {
+                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Video di sfondo -->
     <!-- Video di sfondo -->
     <video autoplay muted loop playsinline id="background-video" preload="auto" poster="/assets/screenshot.png">
         <source src="/assets/background2.mp4" type="video/mp4">
@@ -638,7 +661,7 @@
         <header class="py-5 px-8 theme-border relative">
             <!-- Logo al centro (posizionato in modo assoluto) -->
             <div class="absolute left-1/2 transform -translate-x-1/2">
-                <a href="/index.html#home"
+                <a href="/index1.html#home"
                     class="logo text-3xl font-bold italic tracking-wider theme-text">thevirtueye</a>
             </div>
         </header>
@@ -650,25 +673,29 @@
                     <li>
                         <a href="#home" class="relative inline-block group theme-secondary-text font-bold">
                             Home
-                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-full bg-current transition-all duration-250 delay-100"></span>
+                            <span
+                                class="absolute left-0 -bottom-[0px] h-[1px] w-full bg-current transition-all duration-250 delay-100"></span>
                         </a>
                     </li>
                     <li>
                         <a href="#chi-sono" class="relative inline-block group theme-secondary-text">
                             Chi sono
-                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
+                            <span
+                                class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
                         </a>
                     </li>
                     <li>
                         <a href="#progetti" class="relative inline-block group theme-secondary-text">
                             Progetti
-                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
+                            <span
+                                class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
                         </a>
                     </li>
                     <li>
                         <a href="#approfondimenti" class="relative inline-block group theme-secondary-text">
                             Approfondimenti
-                            <span class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
+                            <span
+                                class="absolute left-0 -bottom-[0px] h-[1px] w-0 bg-current transition-all duration-250 delay-100 group-hover:w-full"></span>
                         </a>
                     </li>
                 </ul>
@@ -1008,7 +1035,7 @@
                                     </a>
                                 </div>
 
-                                
+
                                 <div style="position: relative; margin-bottom: 20px;">
                                     <a href="/Articoli/zero_day.html" class="project-link"
                                         style="display: block; position: relative; z-index: 2; text-decoration: none; padding: 20px; border-radius: 8px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);"
@@ -1048,12 +1075,15 @@
                                                     </h4>
                                                 </div>
                                                 <p style="color: #d1d5db; line-height: 1.7; margin-bottom: 12px;">
-                                                    Nel panorama in continua evoluzione della sicurezza informatica, le vulnerabilità Zero Day rappresentano una delle minacce più temute e pericolose. Ma di che cosa si tratta esattamente? 
+                                                    Nel panorama in continua evoluzione della sicurezza informatica, le
+                                                    vulnerabilità Zero Day rappresentano una delle minacce più temute e
+                                                    pericolose. Ma di che cosa si tratta esattamente?
                                                 </p>
                                                 <div
                                                     style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
                                                     <span
-                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Zero Day</span>
+                                                        style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Zero
+                                                        Day</span>
                                                     <span
                                                         style="background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 4px;">Cybersecurity</span>
                                                     <span
@@ -1079,14 +1109,14 @@
 
                     <!-- Contatti essenziali -->
                     <div class="flex justify-center items-center mb-4">
-                        <a href="mailto:thevirtueye1@gmail.com"
+                        <a href="mailto:thevirtueye@gmail.com"
                             class="theme-secondary-text hover:underline flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                             </svg>
-                            thevirtueye1@gmail.com
+                            thevirtueye@gmail.com
                         </a>
                     </div>
 
@@ -1131,192 +1161,191 @@
     </div>
 
     <script>
-'use strict';
-document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.querySelector('nav');
-    const extra = 30; // px extra sotto il nav
-    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
-    const scrollable = document.getElementById('scroll-content');
-    
-    // Flag per controllare se lo scroll è stato provocato da un clic su un link
-    let isScrollingFromClick = false;
-    // Link attualmente attivo
-    let activeClickedLink = null;
+        'use strict';
 
-    // Definisci i punti di trigger personalizzati per ogni sezione
-    const sectionTriggers = {
-        'home': {
-            triggerPoint: 0,
-            offset: 0
-        },
-        'chi-sono': {
-            triggerPoint: 0,
-            offset: 100
-        },
-        'progetti': {
-            triggerPoint: 0, // Modificato per migliorare la rilevazione
-            offset: 100
-        },
-        'approfondimenti': {
-            triggerPoint: 0, // Modificato per migliorare la rilevazione
-            offset: 100
-        }
-    };
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('nav');
+            const extra = 30; // px extra sotto il nav
+            const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+            const scrollable = document.getElementById('scroll-content');
 
-    // Funzione per attivare il link corretto
-    function activateLink(link) {
-        links.forEach(l => {
-            l.classList.remove('font-bold');
-            const span = l.querySelector('span');
-            span.classList.remove('w-full');
-            span.classList.add('w-0');
-        });
-        
-        if (link) {
-            link.classList.add('font-bold');
-            const span = link.querySelector('span');
-            span.classList.remove('w-0');
-            span.classList.add('w-full');
-        }
-    }
+            // Flag per controllare se lo scroll è stato provocato da un clic su un link
+            let isScrollingFromClick = false;
+            // Link attualmente attivo
+            let activeClickedLink = null;
 
-    // 1. Clip-path dinamico
-// Clip-path dinamico
-window.addEventListener('scroll', () => {
-    const mobileView = window.innerWidth <= 768;
-    
-    if (mobileView) {
-        // Su mobile non serve il clip-path perché l'header scorre con la pagina
-        scrollable.style.clipPath = 'none';
-        scrollable.style.webkitClipPath = 'none';
-    } else {
-        // Su desktop usa il calcolo originale
-        const hideLine = nav.getBoundingClientRect().bottom + extra;
-        const topWrap = scrollable.getBoundingClientRect().top;
-        const over = Math.max(hideLine - topWrap, 0);
-        scrollable.style.clipPath = `inset(${over}px 0 0 0)`;
-        scrollable.style.webkitClipPath = `inset(${over}px 0 0 0)`;
-    }
-});
+            // Definisci i punti di trigger personalizzati per ogni sezione
+            const sectionTriggers = {
+                'home': {
+                    triggerPoint: 0,
+                    offset: 0
+                },
+                'chi-sono': {
+                    triggerPoint: 0,
+                    offset: 100
+                },
+                'progetti': {
+                    triggerPoint: 0, // Modificato per migliorare la rilevazione
+                    offset: 100
+                },
+                'approfondimenti': {
+                    triggerPoint: 0, // Modificato per migliorare la rilevazione
+                    offset: 100
+                }
+            };
 
-    // 2. Smooth-scroll con offset personalizzati
-    links.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').slice(1);
-            const target = document.getElementById(targetId);
-            
-            if (!target) return;
-            
-            // Attiva il link e imposta il flag
-            activateLink(link);
-            isScrollingFromClick = true;
-            activeClickedLink = link;
-            
-            const navHeight = nav.getBoundingClientRect().height;
-            const customOffset = sectionTriggers[targetId]?.offset || 0;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - customOffset;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-            
-            // Resetta il flag dopo un intervallo
-            setTimeout(() => {
-                isScrollingFromClick = false;
-                activeClickedLink = null;
-            }, 1000);
-        });
-    });
+            // Funzione per attivare il link corretto
+            function activateLink(link) {
+                links.forEach(l => {
+                    l.classList.remove('font-bold');
+                    const span = l.querySelector('span');
+                    span.classList.remove('w-full');
+                    span.classList.add('w-0');
+                });
 
-    // 3. Observer migliorato per attivare i link durante lo scroll
-    function checkActiveSection() {
-
-        if (window.innerWidth <= 768) return;
-
-        // Se stiamo scrollando da un clic, non cambiare il link attivo
-        if (isScrollingFromClick) {
-            return;
-        }
-        
-        const navHeight = nav.getBoundingClientRect().height;
-        const scrollPosition = window.scrollY;
-        
-        // Ottieni tutte le sezioni nel documento
-        const sections = links.map(link => {
-            const targetId = link.getAttribute('href').slice(1);
-            return document.getElementById(targetId);
-        }).filter(Boolean); // Rimuovi elementi null
-        
-        // Ordina le sezioni dall'ultima alla prima (per verificare prima quelle più basse nella pagina)
-        const orderedSections = [...sections].reverse();
-        
-        // Calcola una zona buffer per migliorare la rilevazione
-        const buffer = window.innerHeight / 4; // 25% dell'altezza della viewport
-        
-        // Trova la sezione attiva
-        for (const section of orderedSections) {
-            const sectionTop = section.getBoundingClientRect().top + scrollPosition;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            
-            // Se il punto di viewport + buffer è all'interno della sezione, questa è attiva
-            if (scrollPosition + navHeight + buffer >= sectionTop && scrollPosition + navHeight < sectionBottom) {
-                const correspondingLink = links.find(link => link.getAttribute('href') === `#${section.id}`);
-                if (correspondingLink) {
-                    activateLink(correspondingLink);
-                    return;
+                if (link) {
+                    link.classList.add('font-bold');
+                    const span = link.querySelector('span');
+                    span.classList.remove('w-0');
+                    span.classList.add('w-full');
                 }
             }
-        }
-        
-        // Se siamo qui, potremmo essere all'inizio della pagina, quindi attiva Home
-        const isAtTop = scrollPosition < 100; // Considera i primi 100px come "all'inizio"
-        if (isAtTop) {
-            const homeLink = links.find(link => link.getAttribute('href') === '#home');
-            if (homeLink) {
-                activateLink(homeLink);
+
+            // 1. Clip-path dinamico
+            // Clip-path dinamico
+            window.addEventListener('scroll', () => {
+                const mobileView = window.innerWidth <= 768;
+
+                if (mobileView) {
+                    // Su mobile non serve il clip-path perché l'header scorre con la pagina
+                    scrollable.style.clipPath = 'none';
+                    scrollable.style.webkitClipPath = 'none';
+                } else {
+                    // Su desktop usa il calcolo originale
+                    const hideLine = nav.getBoundingClientRect().bottom + extra;
+                    const topWrap = scrollable.getBoundingClientRect().top;
+                    const over = Math.max(hideLine - topWrap, 0);
+                    scrollable.style.clipPath = `inset(${over}px 0 0 0)`;
+                    scrollable.style.webkitClipPath = `inset(${over}px 0 0 0)`;
+                }
+            });
+
+            // 2. Smooth-scroll con offset personalizzati
+            links.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').slice(1);
+                    const target = document.getElementById(targetId);
+
+                    if (!target) return;
+
+                    // Attiva il link e imposta il flag
+                    activateLink(link);
+                    isScrollingFromClick = true;
+                    activeClickedLink = link;
+
+                    const navHeight = nav.getBoundingClientRect().height;
+                    const customOffset = sectionTriggers[targetId]?.offset || 0;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - customOffset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Resetta il flag dopo un intervallo
+                    setTimeout(() => {
+                        isScrollingFromClick = false;
+                        activeClickedLink = null;
+                    }, 1000);
+                });
+            });
+
+            // 3. Observer migliorato per attivare i link durante lo scroll
+            function checkActiveSection() {
+
+                if (window.innerWidth <= 768) return;
+
+                // Se stiamo scrollando da un clic, non cambiare il link attivo
+                if (isScrollingFromClick) {
+                    return;
+                }
+
+                const navHeight = nav.getBoundingClientRect().height;
+                const scrollPosition = window.scrollY;
+
+                // Ottieni tutte le sezioni nel documento
+                const sections = links.map(link => {
+                    const targetId = link.getAttribute('href').slice(1);
+                    return document.getElementById(targetId);
+                }).filter(Boolean); // Rimuovi elementi null
+
+                // Ordina le sezioni dall'ultima alla prima (per verificare prima quelle più basse nella pagina)
+                const orderedSections = [...sections].reverse();
+
+                // Calcola una zona buffer per migliorare la rilevazione
+                const buffer = window.innerHeight / 4; // 25% dell'altezza della viewport
+
+                // Trova la sezione attiva
+                for (const section of orderedSections) {
+                    const sectionTop = section.getBoundingClientRect().top + scrollPosition;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    // Se il punto di viewport + buffer è all'interno della sezione, questa è attiva
+                    if (scrollPosition + navHeight + buffer >= sectionTop && scrollPosition + navHeight < sectionBottom) {
+                        const correspondingLink = links.find(link => link.getAttribute('href') === `#${section.id}`);
+                        if (correspondingLink) {
+                            activateLink(correspondingLink);
+                            return;
+                        }
+                    }
+                }
+
+                // Se siamo qui, potremmo essere all'inizio della pagina, quindi attiva Home
+                const isAtTop = scrollPosition < 100; // Considera i primi 100px come "all'inizio"
+                if (isAtTop) {
+                    const homeLink = links.find(link => link.getAttribute('href') === '#home');
+                    if (homeLink) {
+                        activateLink(homeLink);
+                    }
+                }
             }
+
+            // Aggiungi l'event listener per lo scroll
+            window.addEventListener('scroll', checkActiveSection);
+            window.addEventListener('resize', checkActiveSection);
+
+            // Controlla anche quando il contenuto cambia (può essere utile in alcuni casi)
+            const observer = new MutationObserver(checkActiveSection);
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // Esegui una prima verifica all'avvio
+            checkActiveSection();
+        });
+
+        // Gestione effetti fade-in al scroll
+        const fadeElements = document.querySelectorAll('.fade-in-section');
+
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('is-visible');
+                }
+            });
         }
-    }
 
-    // Aggiungi l'event listener per lo scroll
-    window.addEventListener('scroll', checkActiveSection);
-    window.addEventListener('resize', checkActiveSection);
-    
-    // Controlla anche quando il contenuto cambia (può essere utile in alcuni casi)
-    const observer = new MutationObserver(checkActiveSection);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Esegui una prima verifica all'avvio
-    checkActiveSection();
-});
-
-// Gestione effetti fade-in al scroll
-const fadeElements = document.querySelectorAll('.fade-in-section');
-
-function checkFade() {
-    fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-            element.classList.add('is-visible');
-        }
-    });
-}
-
-// Controlla all'inizio e poi ad ogni scroll
-checkFade();
-window.addEventListener('scroll', checkFade);
+        // Controlla all'inizio e poi ad ogni scroll
+        checkFade();
+        window.addEventListener('scroll', checkFade);
 
 
 
-// Esegui quando il documento è caricato
+        // Esegui quando il documento è caricato
+        // Esegui quando il documento è caricato
         document.addEventListener('DOMContentLoaded', function () {
-            setupMobileMenu();
-
-            // Codice per ottimizzare il caricamento del video
             const video = document.getElementById('background-video');
 
             // Forza il caricamento
@@ -1326,6 +1355,18 @@ window.addEventListener('scroll', checkFade);
             video.addEventListener('canplaythrough', function () {
                 video.play();
             }, { once: true });
+
+            if (isMobile()) {
+                // Riduce qualità o nasconde il video su mobile per migliori prestazioni
+                video.setAttribute('playsinline', '');
+                video.setAttribute('muted', '');
+                video.setAttribute('loop', '');
+                video.setAttribute('preload', 'auto');
+
+                // Opzionale: carica un video di qualità inferiore su mobile
+                // video.querySelector('source').setAttribute('src', '/assets/background2-mobile.mp4');
+                video.load();
+            }
         });
 
 
