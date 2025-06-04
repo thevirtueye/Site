@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self';">
+        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-ancestors 'none';">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
@@ -50,23 +50,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500&display=swap"
         rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5"
+        integrity="sha384-ltWbn5KbNVFiXh4W66I10Q6yC4c0JwJ53lwiCFclqXXdnfoEbafj3b4lBSGvq7WW" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+        integrity="sha384-23+uW0kGkfsEWxGk50cPYj0ni+X9ifXLSouuev2U31SnE/S0L6rE7oJ5VbTchWHR"
+        crossorigin="anonymous"></script>
 
     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Alberto Cirillo",
-          "jobTitle": "Cybersecurity Student",
-          "url": "https://thevirtueye.com",
-          "sameAs": [
-            "https://github.com/thevirtueye",
-            "https://x.com/thevirtueye"
-          ],
-          "knowsAbout": ["Cybersecurity", "OSINT", "Ethical Hacking", "Network Security"]
-        }
-        </script>
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alberto Cirillo",
+  "jobTitle": "Cybersecurity Student",
+  "knowsAbout": ["Cybersecurity"]
+}
+</script>
 
     <!-- Stile personalizzato -->
     <style>
@@ -661,8 +659,7 @@
         <header class="py-5 px-8 theme-border relative">
             <!-- Logo al centro (posizionato in modo assoluto) -->
             <div class="absolute left-1/2 transform -translate-x-1/2">
-                <a href="/index1.html#home"
-                    class="logo text-3xl font-bold italic tracking-wider theme-text">thevirtueye</a>
+                <span class="logo text-3xl font-bold italic tracking-wider theme-text">thevirtueye</span>
             </div>
         </header>
 
@@ -1163,6 +1160,23 @@
     <script>
         'use strict';
 
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Funzione debounce generica
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const nav = document.querySelector('nav');
             const extra = 30; // px extra sotto il nav
@@ -1214,7 +1228,8 @@
             // 1. Clip-path dinamico
             // Clip-path dinamico
             window.addEventListener('scroll', () => {
-                const mobileView = window.innerWidth <= 768;
+                const width = window.innerWidth;
+                const mobileView = (!Number.isFinite(width) || width <= 768);
 
                 if (mobileView) {
                     // Su mobile non serve il clip-path perché l'header scorre con la pagina
@@ -1225,8 +1240,10 @@
                     const hideLine = nav.getBoundingClientRect().bottom + extra;
                     const topWrap = scrollable.getBoundingClientRect().top;
                     const over = Math.max(hideLine - topWrap, 0);
-                    scrollable.style.clipPath = `inset(${over}px 0 0 0)`;
-                    scrollable.style.webkitClipPath = `inset(${over}px 0 0 0)`;
+                    const safeOver = Number.isFinite(over) ? Math.round(over) : 0;
+
+                    scrollable.style.setProperty('clip-path', `inset(${safeOver}px 0 0 0)`);
+                    scrollable.style.setProperty('-webkit-clip-path', `inset(${safeOver}px 0 0 0)`);
                 }
             });
 
@@ -1235,6 +1252,11 @@
                 link.addEventListener('click', e => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href').slice(1);
+                    // Validazione: accetta solo lettere, numeri e trattini
+                    if (!/^[a-zA-Z0-9-]+$/.test(targetId)) {
+                        console.error('ID non valido:', targetId);
+                        return; // Interrompe l'esecuzione se l'ID non è valido
+                    }
                     const target = document.getElementById(targetId);
 
                     if (!target) return;
@@ -1264,7 +1286,8 @@
             // 3. Observer migliorato per attivare i link durante lo scroll
             function checkActiveSection() {
 
-                if (window.innerWidth <= 768) return;
+                const width = window.innerWidth;
+                if (!Number.isFinite(width) || width <= 768) return;
 
                 // Se stiamo scrollando da un clic, non cambiare il link attivo
                 if (isScrollingFromClick) {
@@ -1277,6 +1300,10 @@
                 // Ottieni tutte le sezioni nel documento
                 const sections = links.map(link => {
                     const targetId = link.getAttribute('href').slice(1);
+                    // Aggiungi la stessa validazione
+                    if (!/^[a-zA-Z0-9-]+$/.test(targetId)) {
+                        return null; // Ritorna null invece di continuare
+                    }
                     return document.getElementById(targetId);
                 }).filter(Boolean); // Rimuovi elementi null
 
@@ -1284,7 +1311,8 @@
                 const orderedSections = [...sections].reverse();
 
                 // Calcola una zona buffer per migliorare la rilevazione
-                const buffer = window.innerHeight / 4; // 25% dell'altezza della viewport
+                const height = window.innerHeight;
+                const buffer = Number.isFinite(height) ? height / 4 : 150; // 150px come fallback // 25% dell'altezza della viewport
 
                 // Trova la sezione attiva
                 for (const section of orderedSections) {
@@ -1312,12 +1340,34 @@
             }
 
             // Aggiungi l'event listener per lo scroll
-            window.addEventListener('scroll', checkActiveSection);
-            window.addEventListener('resize', checkActiveSection);
+            // Crea versioni debounced delle funzioni
+            const debouncedCheckActiveSection = debounce(checkActiveSection, 100);
+
+            window.addEventListener('scroll', debouncedCheckActiveSection);
+            window.addEventListener('resize', debouncedCheckActiveSection);
 
             // Controlla anche quando il contenuto cambia (può essere utile in alcuni casi)
             const observer = new MutationObserver(checkActiveSection);
-            observer.observe(document.body, { childList: true, subtree: true });
+            const scrollContent = document.getElementById('scroll-content');
+
+            if (scrollContent) {
+                observer.observe(scrollContent, {
+                    childList: true,
+                    subtree: false,  // Cambiato da true a false
+                    attributes: false,
+                    characterData: false
+                });
+            }
+
+            // Disconnetti l'observer quando la pagina viene chiusa o ricaricata
+            window.addEventListener('beforeunload', () => {
+                observer.disconnect();
+            });
+
+            // Opzionale: disconnetti anche quando l'utente naviga via (se usi SPA)
+            window.addEventListener('pagehide', () => {
+                observer.disconnect();
+            });
 
             // Esegui una prima verifica all'avvio
             checkActiveSection();
@@ -1347,25 +1397,29 @@
         // Esegui quando il documento è caricato
         document.addEventListener('DOMContentLoaded', function () {
             const video = document.getElementById('background-video');
+            let videoLoaded = false;
 
-            // Forza il caricamento
-            video.load();
+            // Funzione per caricare il video una sola volta
+            function loadVideoOnce() {
+                if (!videoLoaded && video) {
+                    videoLoaded = true;
+                    video.load();
+                }
+            }
 
-            // Tenta di riprodurre il video non appena possibile
+            // Carica il video una volta sola
+            loadVideoOnce();
+
             video.addEventListener('canplaythrough', function () {
                 video.play();
             }, { once: true });
 
             if (isMobile()) {
-                // Riduce qualità o nasconde il video su mobile per migliori prestazioni
                 video.setAttribute('playsinline', '');
                 video.setAttribute('muted', '');
                 video.setAttribute('loop', '');
                 video.setAttribute('preload', 'auto');
-
-                // Opzionale: carica un video di qualità inferiore su mobile
-                // video.querySelector('source').setAttribute('src', '/assets/background2-mobile.mp4');
-                video.load();
+                // NON richiamare video.load() qui - già fatto sopra
             }
         });
 
